@@ -1,6 +1,12 @@
 import { useStorage } from 'nitro/storage'
-import matter from 'gray-matter'
+import { parse as parseYaml } from 'yaml'
 import type { SkillConfig } from '../types/skill'
+
+function parseFrontmatter(text: string): { data: Record<string, any>; content: string } {
+  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
+  if (!match) return { data: {}, content: text }
+  return { data: parseYaml(match[1]) as Record<string, any>, content: match[2] }
+}
 
 let cache: SkillConfig[] | null = null
 
@@ -24,7 +30,7 @@ async function scanSkills(): Promise<SkillConfig[]> {
       const text = (await storage.getItem(skillMdKey)) as string
       if (!text) continue
 
-      const { data, content } = matter(text)
+      const { data, content } = parseFrontmatter(text)
 
       const files = allKeys
         .filter((k) => k.startsWith(`${id}:`))
