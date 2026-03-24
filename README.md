@@ -1,6 +1,6 @@
 # Supermarket
 
-Official MCP & Skill Registry for [Memoh](https://github.com/memohai/Memoh).
+Official Skill & MCP Registry for [Memoh](https://github.com/memohai/Memoh).
 
 ## Project Structure
 
@@ -25,6 +25,8 @@ supermarket/
 ```
 
 ## API
+
+Base URL: `https://supermarket.memoh.ai`
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -102,3 +104,7 @@ Instructions and documentation go here...
 ## License
 
 [Apache-2.0](LICENSE)
+
+---
+
+Built with [Nitro](https://nitro.build) and [Cloudflare Workers](https://workers.cloudflare.com).
