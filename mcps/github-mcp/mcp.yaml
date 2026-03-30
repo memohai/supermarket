@@ -1,7 +1,8 @@
 name: github-mcp
 description: GitHub MCP server providing repository management, issue tracking, pull request operations, and code search capabilities.
-author: GitHub
-author_email: support@github.com
+author:
+  name: GitHub
+  email: support@github.com
 transport: stdio
 icon: https://github.githubassets.com/favicons/favicon.svg
 homepage: https://github.com/github/github-mcp-server

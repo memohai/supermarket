@@ -4,11 +4,15 @@ export interface McpConfigVar {
   defaultValue?: string
 }
 
+export interface McpAuthor {
+  name: string
+  email: string
+}
+
 export interface McpBase {
   name: string
   description: string
-  author: string
-  author_email: string
+  author: McpAuthor
   icon?: string
   homepage?: string
   tags?: string[]

@@ -2,8 +2,9 @@
 name: git-workflow
 description: Assist with Git operations including branching strategies, commit message conventions, merge conflict resolution, and pull request workflows. Use when the task involves git commands, branch management, or collaborative development workflows.
 metadata:
-  author: Supermarket Team
-  author_email: team@supermarket.dev
+  author:
+    name: Supermarket Team
+    email: team@supermarket.dev
   tags:
     - git
     - workflow

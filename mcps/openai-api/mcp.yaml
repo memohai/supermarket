@@ -1,7 +1,8 @@
 name: openai-api
 description: OpenAI API MCP server for interacting with GPT models, embeddings, and image generation via streamable HTTP transport.
-author: OpenAI
-author_email: support@openai.com
+author:
+  name: OpenAI
+  email: support@openai.com
 transport: http
 homepage: https://platform.openai.com
 tags:

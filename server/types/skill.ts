@@ -1,6 +1,10 @@
+export interface SkillAuthor {
+  name: string
+  email: string
+}
+
 export interface SkillMetadata {
-  author: string
-  author_email: string
+  author: SkillAuthor
   tags?: string[]
   homepage?: string
 }

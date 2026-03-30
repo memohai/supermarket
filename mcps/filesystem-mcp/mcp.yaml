@@ -1,7 +1,8 @@
 name: filesystem-mcp
 description: File system MCP server providing read/write access, directory listing, search, and file management via SSE transport.
-author: Anthropic
-author_email: support@anthropic.com
+author:
+  name: Anthropic
+  email: support@anthropic.com
 transport: sse
 homepage: https://github.com/anthropics/filesystem-mcp
 tags:

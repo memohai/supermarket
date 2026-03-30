@@ -30,12 +30,13 @@ Base URL: `https://supermarket.memoh.ai`
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/api/mcps` | List MCPs. Query: `q`, `transport`, `page`, `limit` |
+| GET | `/api/mcps` | List MCPs. Query: `q`, `tag`, `transport`, `page`, `limit` |
 | GET | `/api/mcps/:id` | Get MCP details |
 | GET | `/api/mcps/:id/download` | Download MCP config. Query: `format=yaml\|json` |
-| GET | `/api/skills` | List skills. Query: `q`, `page`, `limit` |
+| GET | `/api/skills` | List skills. Query: `q`, `tag`, `page`, `limit` |
 | GET | `/api/skills/:id` | Get skill details |
 | GET | `/api/skills/:id/download` | Download skill directory (tar.gz) |
+| GET | `/api/tags` | List all tags (aggregated from MCPs and skills) |
 
 ## Contributing
 
@@ -47,8 +48,9 @@ Base URL: `https://supermarket.memoh.ai`
 ```yaml
 name: my-mcp
 description: A short description of what this MCP server does.
-author: Your Name
-author_email: you@example.com
+author:
+  name: Your Name
+  email: you@example.com
 transport: sse | http | stdio     # Pick one
 
 # For sse / http transport
@@ -88,8 +90,9 @@ tags:
 name: my-skill
 description: What this skill does and when to use it.
 metadata:
-  author: Your Name
-  author_email: you@example.com
+  author:
+    name: Your Name
+    email: you@example.com
   tags:
     - tag1
     - tag2

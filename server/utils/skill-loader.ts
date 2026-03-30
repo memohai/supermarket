@@ -1,6 +1,13 @@
 import { useStorage } from 'nitro/storage'
 import { parse as parseYaml } from 'yaml'
-import type { SkillConfig } from '../types/skill'
+import type { SkillAuthor, SkillConfig } from '../types/skill'
+
+function normalizeAuthor(raw: any): SkillAuthor {
+  if (raw && typeof raw === 'object' && 'name' in raw) {
+    return { name: String(raw.name ?? ''), email: String(raw.email ?? '') }
+  }
+  return { name: String(raw ?? ''), email: '' }
+}
 
 function parseFrontmatter(text: string): { data: Record<string, any>; content: string } {
   const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
@@ -36,13 +43,18 @@ async function scanSkills(): Promise<SkillConfig[]> {
         .filter((k) => k.startsWith(`${id}:`))
         .map((k) => k.substring(id.length + 1).replaceAll(':', '/'))
 
+      const authorRaw = data.metadata?.author
+      const author = normalizeAuthor(authorRaw)
+      if (!author.email && data.metadata?.author_email) {
+        author.email = String(data.metadata.author_email)
+      }
+
       results.push({
         id,
         name: data.name ?? id,
         description: data.description ?? '',
         metadata: {
-          author: data.metadata?.author ?? '',
-          author_email: data.metadata?.author_email ?? '',
+          author,
           tags: data.metadata?.tags,
           homepage: data.metadata?.homepage,
         },
@@ -70,11 +82,17 @@ export function invalidateSkillCache() {
 
 export async function getAllSkills(options?: {
   q?: string
+  tag?: string
   page?: number
   limit?: number
 }) {
   const all = await getCache()
   let filtered = all
+
+  if (options?.tag) {
+    const tag = options.tag.toLowerCase()
+    filtered = filtered.filter((s) => s.metadata.tags?.some((t) => t.toLowerCase() === tag))
+  }
 
   if (options?.q) {
     const q = options.q.toLowerCase()
@@ -101,6 +119,17 @@ export async function getAllSkills(options?: {
 export async function getSkillById(id: string): Promise<SkillConfig | undefined> {
   const all = await getCache()
   return all.find((s) => s.id === id)
+}
+
+export async function getAllSkillTags(): Promise<string[]> {
+  const all = await getCache()
+  const tags = new Set<string>()
+  for (const s of all) {
+    if (s.metadata.tags) {
+      for (const t of s.metadata.tags) tags.add(t)
+    }
+  }
+  return [...tags].sort()
 }
 
 export async function getSkillFiles(id: string): Promise<Record<string, string>> {
