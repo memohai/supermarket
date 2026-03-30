@@ -132,18 +132,27 @@ export async function getAllSkillTags(): Promise<string[]> {
   return [...tags].sort()
 }
 
-export async function getSkillFiles(id: string): Promise<Record<string, string>> {
+export async function getSkillFiles(id: string): Promise<Record<string, Uint8Array>> {
   const storage = useStorage('assets/skills')
   const allKeys = await storage.getKeys()
   const prefix = `${id}:`
-  const files: Record<string, string> = {}
+  const files: Record<string, Uint8Array> = {}
+  const encoder = new TextEncoder()
 
   for (const key of allKeys) {
     if (!key.startsWith(prefix)) continue
     const relativePath = key.substring(prefix.length).replaceAll(':', '/')
-    const content = (await storage.getItem(key)) as string
-    if (content != null) {
-      files[relativePath] = content
+    const raw = await storage.getItemRaw(key)
+    if (raw != null) {
+      if (raw instanceof Uint8Array) {
+        files[relativePath] = raw
+      } else if (raw instanceof ArrayBuffer) {
+        files[relativePath] = new Uint8Array(raw)
+      } else if (typeof raw === 'string') {
+        files[relativePath] = encoder.encode(raw)
+      } else {
+        files[relativePath] = encoder.encode(String(raw))
+      }
     }
   }
 

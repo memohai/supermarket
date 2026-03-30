@@ -33,12 +33,10 @@ function createHeader(filename: string, size: number): Uint8Array {
   return header
 }
 
-export function createTar(files: Record<string, string>, prefix: string): Uint8Array {
-  const encoder = new TextEncoder()
+export function createTar(files: Record<string, Uint8Array>, prefix: string): Uint8Array {
   const parts: Uint8Array[] = []
 
-  for (const [name, content] of Object.entries(files)) {
-    const data = encoder.encode(content)
+  for (const [name, data] of Object.entries(files)) {
     const path = prefix ? `${prefix}/${name}` : name
     parts.push(createHeader(path, data.length))
     parts.push(data)
