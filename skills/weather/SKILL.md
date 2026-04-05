@@ -46,6 +46,42 @@ Fallback web fetch path:
 - `https://wttr.in/Shanghai?format=3`
 - `https://wttr.in/Shanghai?format=j1`
 
+Use the same `wttr.in` URLs with `web_fetch` when `curl` is unavailable.
+
+## wttr.in Request Patterns
+
+Current conditions:
+
+```bash
+curl -s "wttr.in/Shanghai?format=3"
+curl -s "wttr.in/Shanghai?0"
+```
+
+Forecasts:
+
+```bash
+curl -s "wttr.in/Shanghai"
+curl -s "wttr.in/Shanghai?format=v2"
+curl -s "wttr.in/Shanghai?1"
+```
+
+Format options:
+
+```bash
+curl -s "wttr.in/Shanghai?format=%l:+%c+%t+%w"
+curl -s "wttr.in/Shanghai?format=j1"
+```
+
+Useful format codes:
+
+- `%l` location
+- `%c` condition
+- `%t` temperature
+- `%f` feels like
+- `%w` wind
+- `%h` humidity
+- `%p` precipitation
+
 ## Common Request Shapes
 
 - "What's the weather in Paris today?" -> Give a current summary and, if available, today's high and low.
