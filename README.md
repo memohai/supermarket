@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/memohai-supermarket-badge.png)](https://mseep.ai/app/memohai-supermarket)
+
 # Supermarket
 
 Official Skill & MCP Registry for [Memoh](https://github.com/memohai/Memoh).
