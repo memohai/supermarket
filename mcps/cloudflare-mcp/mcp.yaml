@@ -1,0 +1,17 @@
+name: cloudflare-mcp
+description: Official Cloudflare MCP server for managing Workers, KV, R2, D1, Durable Objects, and Queues.
+author:
+  name: Cloudflare
+  email: support@cloudflare.com
+transport: stdio
+icon: https://www.cloudflare.com/favicon.ico
+homepage: https://github.com/cloudflare/mcp-server-cloudflare
+tags:
+  - cloudflare
+  - cloud
+  - edge-computing
+
+command: npx
+args:
+  - "-y"
+  - "@cloudflare/mcp-server-cloudflare"

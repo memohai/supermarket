@@ -1,0 +1,22 @@
+name: postgres-mcp
+description: PostgreSQL MCP server providing read-only database access, SQL query execution, and automatic schema discovery.
+author:
+  name: Anthropic
+  email: support@anthropic.com
+transport: stdio
+homepage: https://github.com/modelcontextprotocol/servers
+tags:
+  - database
+  - postgres
+  - sql
+
+command: npx
+args:
+  - "-y"
+  - "@modelcontextprotocol/server-postgres"
+  - "${POSTGRES_CONNECTION_STRING}"
+
+env:
+  - key: POSTGRES_CONNECTION_STRING
+    description: PostgreSQL connection string (e.g. postgresql://user:pass@localhost:5432/mydb)
+    defaultValue: ""

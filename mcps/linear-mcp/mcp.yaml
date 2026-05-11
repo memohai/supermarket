@@ -1,0 +1,14 @@
+name: linear-mcp
+description: Linear MCP server for issue tracking, project management, and team workflow automation.
+author:
+  name: Linear
+  email: support@linear.app
+transport: http
+icon: https://linear.app/favicon.ico
+homepage: https://linear.app/docs/mcp
+tags:
+  - linear
+  - project-management
+  - issue-tracking
+
+url: https://mcp.linear.app/mcp

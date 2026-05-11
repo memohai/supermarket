@@ -1,0 +1,20 @@
+name: esignatures-mcp
+description: eSignatures MCP server for contract creation, template management, and electronic signature workflows.
+author:
+  name: eSignatures.com
+  email: support@esignatures.com
+transport: stdio
+homepage: https://github.com/esignaturescom/mcp-server-esignatures
+tags:
+  - esignatures
+  - contracts
+  - legal
+
+command: uvx
+args:
+  - "mcp-server-esignatures"
+
+env:
+  - key: ESIGNATURES_SECRET_TOKEN
+    description: eSignatures API secret token
+    defaultValue: ""

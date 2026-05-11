@@ -1,0 +1,17 @@
+name: sentry-mcp
+description: Official Sentry MCP server for error monitoring, issue tracking, and performance insights.
+author:
+  name: Sentry
+  email: support@sentry.io
+transport: stdio
+icon: https://sentry.io/favicon.ico
+homepage: https://docs.sentry.io/ai/mcp/
+tags:
+  - sentry
+  - monitoring
+  - error-tracking
+
+command: npx
+args:
+  - "-y"
+  - "@sentry/mcp-server@latest"

@@ -1,0 +1,23 @@
+name: stripe-mcp
+description: Official Stripe MCP server for payment processing, customer management, and billing operations.
+author:
+  name: Stripe
+  email: support@stripe.com
+transport: stdio
+icon: https://stripe.com/favicon.ico
+homepage: https://docs.stripe.com/mcp
+tags:
+  - stripe
+  - payments
+  - billing
+
+command: npx
+args:
+  - "-y"
+  - "@stripe/mcp"
+  - "--api-key=${STRIPE_SECRET_KEY}"
+
+env:
+  - key: STRIPE_SECRET_KEY
+    description: Stripe secret API key
+    defaultValue: ""

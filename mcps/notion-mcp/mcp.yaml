@@ -1,0 +1,22 @@
+name: notion-mcp
+description: Official Notion MCP server for pages, databases, search, comments, and content management.
+author:
+  name: Notion
+  email: support@makenotion.com
+transport: stdio
+icon: https://www.notion.com/front-static/favicon.ico
+homepage: https://github.com/makenotion/notion-mcp-server
+tags:
+  - notion
+  - knowledge-base
+  - productivity
+
+command: npx
+args:
+  - "-y"
+  - "@notionhq/notion-mcp-server"
+
+env:
+  - key: NOTION_TOKEN
+    description: Notion integration token (Internal Integration Secret)
+    defaultValue: ""

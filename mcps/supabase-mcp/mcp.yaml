@@ -1,0 +1,22 @@
+name: supabase-mcp
+description: Official Supabase MCP server for database management, authentication, storage, and edge functions.
+author:
+  name: Supabase
+  email: support@supabase.io
+transport: stdio
+icon: https://supabase.com/favicon.ico
+homepage: https://supabase.com/docs/guides/ai-tools/mcp
+tags:
+  - supabase
+  - database
+  - backend-as-a-service
+
+command: npx
+args:
+  - "-y"
+  - "@supabase/mcp-server-supabase"
+
+env:
+  - key: SUPABASE_ACCESS_TOKEN
+    description: Supabase personal access token
+    defaultValue: ""

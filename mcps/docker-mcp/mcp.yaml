@@ -1,0 +1,21 @@
+name: docker-mcp
+description: Docker MCP server for managing containers, images, networks, volumes, and system operations.
+author:
+  name: Swartdraak
+  email: ""
+transport: stdio
+homepage: https://github.com/Swartdraak/Docker-MCP
+tags:
+  - docker
+  - containers
+  - devops
+
+command: npx
+args:
+  - "-y"
+  - "@swartdraak/docker-mcp-server"
+
+env:
+  - key: DOCKER_HOST
+    description: Docker host URL for remote connections (e.g. tcp://192.168.1.100:2375). Leave empty for local Docker socket.
+    defaultValue: ""

@@ -1,0 +1,27 @@
+name: jira-mcp
+description: Atlassian Jira MCP server for project management, issue tracking, JQL search, and development information.
+author:
+  name: aashari
+  email: ""
+transport: stdio
+homepage: https://github.com/aashari/mcp-server-atlassian-jira
+tags:
+  - jira
+  - atlassian
+  - project-management
+
+command: npx
+args:
+  - "-y"
+  - "@aashari/mcp-server-atlassian-jira"
+
+env:
+  - key: ATLASSIAN_SITE_NAME
+    description: Your Atlassian site name, the subdomain part of your-domain.atlassian.net (e.g. your-domain)
+    defaultValue: ""
+  - key: ATLASSIAN_USER_EMAIL
+    description: Atlassian account email address
+    defaultValue: ""
+  - key: ATLASSIAN_API_TOKEN
+    description: Atlassian API token
+    defaultValue: ""
