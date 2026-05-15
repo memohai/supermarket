@@ -4,7 +4,7 @@ author:
   name: Stripe
   email: support@stripe.com
 transport: stdio
-icon: icon.svg
+icon: https://stripe.com/favicon.ico
 homepage: https://docs.stripe.com/mcp
 tags:
   - stripe

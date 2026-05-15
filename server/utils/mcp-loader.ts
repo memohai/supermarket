@@ -11,8 +11,6 @@ function normalizeAuthor(raw: any): McpAuthor {
   return { name: String(raw ?? ''), email: '' }
 }
 
-const BASE_URL = process.env.SUPERMARKET_BASE_URL || 'https://supermarket.memoh.ai'
-
 async function scanMcps(): Promise<McpEntry[]> {
   const entries: McpEntry[] = []
   const storage = useStorage('assets/mcps')
@@ -32,9 +30,6 @@ async function scanMcps(): Promise<McpEntry[]> {
         author.email = String(data.author_email)
       }
       const { author_email: _, ...rest } = data
-      if (rest.icon && !String(rest.icon).startsWith('http')) {
-        rest.icon = `${BASE_URL}/api/mcps/${id}/icon`
-      }
       entries.push({ ...rest, author, id } as McpEntry)
     } catch {
       // skip invalid entries

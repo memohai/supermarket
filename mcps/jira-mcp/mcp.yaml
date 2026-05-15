@@ -4,7 +4,7 @@ author:
   name: aashari
   email: ""
 transport: stdio
-icon: icon.svg
+icon: https://jira.atlassian.com/favicon.ico
 homepage: https://github.com/aashari/mcp-server-atlassian-jira
 tags:
   - jira

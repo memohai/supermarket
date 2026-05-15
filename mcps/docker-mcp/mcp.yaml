@@ -4,7 +4,7 @@ author:
   name: Swartdraak
   email: ""
 transport: stdio
-icon: icon.svg
+icon: https://www.docker.com/favicon.ico
 homepage: https://github.com/Swartdraak/Docker-MCP
 tags:
   - docker

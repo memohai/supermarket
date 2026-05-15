@@ -4,7 +4,7 @@ author:
   name: Cloudflare
   email: support@cloudflare.com
 transport: stdio
-icon: icon.svg
+icon: https://www.cloudflare.com/favicon.ico
 homepage: https://github.com/cloudflare/mcp-server-cloudflare
 tags:
   - cloudflare

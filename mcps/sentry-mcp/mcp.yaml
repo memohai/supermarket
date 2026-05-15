@@ -4,7 +4,7 @@ author:
   name: Sentry
   email: support@sentry.io
 transport: stdio
-icon: icon.svg
+icon: https://sentry-brand.storage.googleapis.com/sentry-glyph-black.svg
 homepage: https://docs.sentry.io/ai/mcp/
 tags:
   - sentry

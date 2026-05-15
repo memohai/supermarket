@@ -4,7 +4,7 @@ author:
   name: GitHub
   email: support@github.com
 transport: stdio
-icon: icon.svg
+icon: https://github.githubassets.com/favicons/favicon.svg
 homepage: https://github.com/github/github-mcp-server
 tags:
   - github
