@@ -1,4 +1,4 @@
-name: jira-mcp
+name: Jira
 description: Atlassian Jira MCP server for project management, issue tracking, JQL search, and development information.
 author:
   name: aashari

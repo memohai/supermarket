@@ -1,4 +1,4 @@
-name: cloudflare-mcp
+name: Cloudflare
 description: Official Cloudflare MCP server for managing Workers, KV, R2, D1, Durable Objects, and Queues.
 author:
   name: Cloudflare

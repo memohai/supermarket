@@ -1,4 +1,4 @@
-name: supabase-mcp
+name: Supabase
 description: Official Supabase MCP server for database management, authentication, storage, and edge functions.
 author:
   name: Supabase

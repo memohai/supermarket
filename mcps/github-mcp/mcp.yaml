@@ -1,4 +1,4 @@
-name: github-mcp
+name: GitHub
 description: GitHub MCP server providing repository management, issue tracking, pull request operations, and code search capabilities.
 author:
   name: GitHub

@@ -1,4 +1,4 @@
-name: postgres-mcp
+name: Postgres
 description: PostgreSQL MCP server providing read-only database access, SQL query execution, and automatic schema discovery.
 author:
   name: Anthropic

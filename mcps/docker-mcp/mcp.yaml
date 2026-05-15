@@ -1,4 +1,4 @@
-name: docker-mcp
+name: Docker
 description: Docker MCP server for managing containers, images, networks, volumes, and system operations.
 author:
   name: Swartdraak
