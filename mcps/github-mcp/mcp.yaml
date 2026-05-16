@@ -3,7 +3,7 @@ description: GitHub MCP server providing repository management, issue tracking, 
 author:
   name: GitHub
   email: support@github.com
-transport: stdio
+transport: http
 icon: https://github.githubassets.com/favicons/favicon.svg
 homepage: https://github.com/github/github-mcp-server
 tags:
@@ -11,12 +11,9 @@ tags:
   - git
   - devtools
 
-command: npx
-args:
-  - "-y"
-  - "@github/mcp-server"
+url: https://api.githubcopilot.com/mcp/
 
-env:
-  - key: GITHUB_TOKEN
-    description: GitHub personal access token with repo scope
-    defaultValue: ""
+headers:
+  - key: Authorization
+    description: GitHub personal access token. Use the format: Bearer <token>
+    defaultValue: "Bearer "
