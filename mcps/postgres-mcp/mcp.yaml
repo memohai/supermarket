@@ -4,6 +4,7 @@ author:
   name: Anthropic
   email: support@anthropic.com
 transport: stdio
+icon: https://www.postgresql.org/media/img/about/press/elephant.png
 homepage: https://github.com/modelcontextprotocol/servers
 tags:
   - database

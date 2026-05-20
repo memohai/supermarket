@@ -4,7 +4,7 @@ author:
   name: Supabase
   email: support@supabase.io
 transport: stdio
-icon: https://supabase.com/favicon.ico
+icon: https://supabase.com/dashboard/img/supabase-logo.svg
 homepage: https://supabase.com/docs/guides/ai-tools/mcp
 tags:
   - supabase

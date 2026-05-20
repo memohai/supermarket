@@ -4,7 +4,7 @@ author:
   name: Linear
   email: support@linear.app
 transport: http
-icon: https://linear.app/favicon.ico
+icon: https://linear.app/favicon.svg
 homepage: https://linear.app/docs/mcp
 tags:
   - linear

@@ -78,4 +78,7 @@ function nitroRawHtmlFix(): Plugin {
 
 export default defineConfig({
   plugins: [nitroRawHtmlFix(), vue(), nitro()],
+  server: {
+    allowedHosts: ['host.docker.internal'],
+  },
 })
