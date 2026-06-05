@@ -1,9 +1,8 @@
 import { useStorage } from 'nitro/storage'
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml'
-import type { McpAuthor, McpConfigVar, McpEntry } from '../types/mcp'
-import type { PluginEntry, PluginIcon, PluginMcpResource } from '../types/plugin'
+import type { McpAuthor } from '../types/mcp'
+import type { PluginEntry, PluginIcon } from '../types/plugin'
 import type { SkillConfig } from '../types/skill'
-import { getAllMcps } from './mcp-loader'
 
 let cache: PluginEntry[] | null = null
 
@@ -26,61 +25,6 @@ function normalizeIcon(raw: any): PluginIcon | undefined {
     return { kind, url: String(raw.url) }
   }
   return undefined
-}
-
-function fallbackPluginIDFromMcpID(id: string): string {
-  return id.replace(/-mcp$/, '')
-}
-
-function pluginMcpKeyFromMcpID(id: string): string {
-  const normalized = fallbackPluginIDFromMcpID(id).replace(/[^a-zA-Z0-9_-]+/g, '_')
-  return normalized || 'mcp'
-}
-
-function mcpToPluginResource(mcp: McpEntry): PluginMcpResource {
-  const { id: _id, icon: _icon, homepage: _homepage, tags: _tags, author: _author, description: _description, ...config } = mcp
-  if (config.transport === 'http' || config.transport === 'sse') {
-    return {
-      key: pluginMcpKeyFromMcpID(mcp.id),
-      name: config.name,
-      description: mcp.description,
-      transport: config.transport,
-      url: config.url,
-      headers: config.headers,
-      visibility: 'hidden',
-      capabilities: mcp.tags,
-    } as PluginMcpResource
-  }
-  return {
-    ...config,
-    key: pluginMcpKeyFromMcpID(mcp.id),
-    visibility: 'hidden',
-  } as PluginMcpResource
-}
-
-function mcpToPlugin(mcp: McpEntry): PluginEntry {
-  const variables: McpConfigVar[] = [...(mcp.env ?? [])]
-  if ('headers' in mcp && Array.isArray(mcp.headers)) {
-    variables.push(...mcp.headers)
-  }
-  return {
-    schema_version: '1',
-    id: fallbackPluginIDFromMcpID(mcp.id),
-    name: mcp.name,
-    version: '0.1.0',
-    description: mcp.description,
-    author: mcp.author,
-    icon: normalizeIcon(mcp.icon),
-    homepage: mcp.homepage,
-    tags: mcp.tags,
-    capabilities: mcp.tags,
-    variables,
-    auth_requirements: variables.length
-      ? [{ key: 'user_config', type: 'user_secret', variables: variables.map((item) => item.key) }]
-      : [{ key: 'anonymous', type: 'none' }],
-    mcps: [mcpToPluginResource(mcp)],
-    skills: [],
-  }
 }
 
 async function readBundledSkills(pluginID: string): Promise<SkillConfig[]> {
@@ -158,17 +102,7 @@ async function scanExplicitPlugins(): Promise<PluginEntry[]> {
 
 async function scanPlugins(): Promise<PluginEntry[]> {
   const explicit = await scanExplicitPlugins()
-  const byID = new Map(explicit.map((plugin) => [plugin.id, plugin]))
-
-  const mcpPlugins = await getAllMcps({ limit: 1000 })
-  for (const mcp of mcpPlugins.data) {
-    const plugin = mcpToPlugin(mcp)
-    if (!byID.has(plugin.id)) {
-      byID.set(plugin.id, plugin)
-    }
-  }
-
-  return [...byID.values()].sort((a, b) => a.name.localeCompare(b.name))
+  return explicit.sort((a, b) => a.name.localeCompare(b.name))
 }
 
 async function getCache(): Promise<PluginEntry[]> {

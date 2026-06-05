@@ -10,9 +10,6 @@ supermarket/
 │   └── <plugin-id>/
 │       ├── plugin.yaml    # Required plugin manifest
 │       └── skills/        # Optional bundled skills
-├── mcps/                  # MCP server registry
-│   └── <mcp-id>/
-│       └── mcp.yaml
 ├── skills/                # Skill registry
 │   └── <skill-id>/
 │       ├── SKILL.md       # Required entry file
@@ -20,7 +17,6 @@ supermarket/
 ├── server/                # Nitro API routes & utilities
 │   ├── api/
 │   │   ├── plugins/
-│   │   ├── mcps/
 │   │   └── skills/
 │   ├── utils/
 │   └── types/
@@ -38,9 +34,6 @@ Base URL: `https://supermarket.memoh.ai`
 | GET | `/api/plugins` | List Plugins. Query: `q`, `tag`, `page`, `limit` |
 | GET | `/api/plugins/:id` | Get Plugin details |
 | GET | `/api/plugins/:id/download` | Download Plugin package (`plugin.yaml` plus bundled skills) |
-| GET | `/api/mcps` | List MCPs. Query: `q`, `tag`, `transport`, `page`, `limit` |
-| GET | `/api/mcps/:id` | Get MCP details |
-| GET | `/api/mcps/:id/download` | Download MCP config. Query: `format=yaml\|json` |
 | GET | `/api/skills` | List skills. Query: `q`, `tag`, `page`, `limit` |
 | GET | `/api/skills/:id` | Get skill details |
 | GET | `/api/skills/:id/download` | Download skill directory (tar.gz) |
@@ -93,46 +86,6 @@ skills: []
 ```
 
 3. Optionally bundle skills under `plugins/<plugin-id>/skills/<skill-id>/SKILL.md`.
-
-### Adding an MCP Server
-
-1. Create a directory under `mcps/` named after your MCP (e.g. `mcps/my-mcp/`).
-2. Add a `mcp.yaml` file with the following schema:
-
-```yaml
-name: my-mcp
-description: A short description of what this MCP server does.
-author:
-  name: Your Name
-  email: you@example.com
-transport: sse | http | stdio     # Pick one
-
-# For sse / http transport
-url: https://example.com/mcp
-headers:
-  - key: Authorization
-    description: Bearer token
-    defaultValue: "Bearer ${API_KEY}"
-
-# For stdio transport
-command: npx
-args:
-  - "-y"
-  - "@my-org/mcp-server"
-
-# Environment variables (all transports)
-env:
-  - key: API_KEY
-    description: API key for authentication
-    defaultValue: ""
-
-# Optional
-icon: https://example.com/icon.svg
-homepage: https://example.com
-tags:
-  - category
-  - another-tag
-```
 
 ### Adding a Skill
 
