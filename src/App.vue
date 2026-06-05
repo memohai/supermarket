@@ -6,12 +6,13 @@
     <div class="card">
       <div class="icon">🏗️</div>
       <h1>Supermarket</h1>
-      <p class="subtitle">MCP & Skills Marketplace</p>
+      <p class="subtitle">Plugins & Skills Marketplace</p>
       <div class="badge">WORK IN PROGRESS</div>
       <p class="desc">
-        A marketplace for discovering, searching, and installing MCP servers and AI skills.
+        A marketplace for discovering, searching, and installing Memoh plugins and AI skills.
       </p>
       <div class="links">
+        <a href="/api/plugins" target="_blank">API: Plugins</a>
         <a href="/api/mcps" target="_blank">API: MCPs</a>
         <a href="/api/skills" target="_blank">API: Skills</a>
       </div>

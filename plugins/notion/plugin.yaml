@@ -1,0 +1,52 @@
+schema_version: "1"
+id: notion
+name: Notion
+version: 0.1.0
+description: Official Notion MCP server for pages, databases, search, comments, and content management.
+author:
+  name: Notion
+  email: support@makenotion.com
+icon:
+  kind: external_url
+  url: https://www.notion.com/front-static/favicon.ico
+homepage: https://github.com/makenotion/notion-mcp-server
+tags:
+  - notion
+  - knowledge-base
+  - productivity
+capabilities:
+  - pages
+  - databases
+  - search
+  - comments
+variables:
+  - key: NOTION_TOKEN
+    description: Notion integration token (Internal Integration Secret)
+    defaultValue: ""
+    required: true
+    secret: true
+auth_requirements:
+  - key: user_token
+    type: user_secret
+    variables:
+      - NOTION_TOKEN
+mcps:
+  - key: notion
+    display_name: Notion MCP
+    description: Hidden MCP resource managed by the Notion plugin.
+    transport: stdio
+    command: npx
+    args:
+      - "-y"
+      - "@notionhq/notion-mcp-server"
+    env:
+      - key: NOTION_TOKEN
+        description: Notion integration token (Internal Integration Secret)
+        defaultValue: "${NOTION_TOKEN}"
+        required: true
+        secret: true
+    auth_ref: user_token
+    visibility: hidden
+    capabilities:
+      - notion
+      - knowledge-base

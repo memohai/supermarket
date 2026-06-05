@@ -1,11 +1,15 @@
 # Supermarket
 
-Official Skill & MCP Registry for [Memoh](https://github.com/memohai/Memoh).
+Official Plugin & Skill Registry for [Memoh](https://github.com/memohai/Memoh).
 
 ## Project Structure
 
 ```
 supermarket/
+├── plugins/               # Plugin registry
+│   └── <plugin-id>/
+│       ├── plugin.yaml    # Required plugin manifest
+│       └── skills/        # Optional bundled skills
 ├── mcps/                  # MCP server registry
 │   └── <mcp-id>/
 │       └── mcp.yaml
@@ -15,6 +19,7 @@ supermarket/
 │       └── ...            # Optional scripts, references, assets
 ├── server/                # Nitro API routes & utilities
 │   ├── api/
+│   │   ├── plugins/
 │   │   ├── mcps/
 │   │   └── skills/
 │   ├── utils/
@@ -30,15 +35,64 @@ Base URL: `https://supermarket.memoh.ai`
 
 | Method | Path | Description |
 |--------|------|-------------|
+| GET | `/api/plugins` | List Plugins. Query: `q`, `tag`, `page`, `limit` |
+| GET | `/api/plugins/:id` | Get Plugin details |
+| GET | `/api/plugins/:id/download` | Download Plugin package (`plugin.yaml` plus bundled skills) |
 | GET | `/api/mcps` | List MCPs. Query: `q`, `tag`, `transport`, `page`, `limit` |
 | GET | `/api/mcps/:id` | Get MCP details |
 | GET | `/api/mcps/:id/download` | Download MCP config. Query: `format=yaml\|json` |
 | GET | `/api/skills` | List skills. Query: `q`, `tag`, `page`, `limit` |
 | GET | `/api/skills/:id` | Get skill details |
 | GET | `/api/skills/:id/download` | Download skill directory (tar.gz) |
-| GET | `/api/tags` | List all tags (aggregated from MCPs and skills) |
+| GET | `/api/tags` | List all tags (aggregated from Plugins and Skills) |
 
 ## Contributing
+
+### Adding a Plugin
+
+1. Create a directory under `plugins/` named after your plugin (e.g. `plugins/notion/`).
+2. Add a `plugin.yaml` manifest:
+
+```yaml
+schema_version: "1"
+id: notion
+name: Notion
+version: "0.1.0"
+description: Use Notion pages, databases, and search from Memoh.
+author:
+  name: Memoh
+  email: support@memoh.ai
+icon:
+  kind: builtin | external_url
+  name: notion                 # for builtin
+  url: https://example/icon.svg # for external_url
+homepage: https://example.com
+tags:
+  - productivity
+capabilities:
+  - search_pages
+
+auth_requirements:
+  - key: notion_oauth
+    type: none | managed_oauth | user_secret
+    client_ref: notion
+    scopes: []
+
+mcps:
+  - key: notion
+    name: Notion
+    transport: stdio
+    command: npx
+    args:
+      - "-y"
+      - "@notionhq/notion-mcp-server"
+    auth_ref: notion_oauth
+    visibility: hidden
+
+skills: []
+```
+
+3. Optionally bundle skills under `plugins/<plugin-id>/skills/<skill-id>/SKILL.md`.
 
 ### Adding an MCP Server
 

@@ -4,6 +4,7 @@ dist
 .nitro
 .cache
 .output
+.wrangler
 .env
 .env.local
 bun.lockb

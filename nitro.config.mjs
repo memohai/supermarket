@@ -10,6 +10,7 @@ export default defineNitroConfig({
   },
   serverAssets: [
     { baseName: "mcps", dir: "./mcps" },
+    { baseName: "plugins", dir: "./plugins" },
     { baseName: "skills", dir: "./skills" },
   ],
 });
