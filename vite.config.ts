@@ -64,7 +64,7 @@ function nitroRawHtmlFix(): Plugin {
       }
     },
     resolveId(id) {
-      if (id.includes('html-proxy') && /(skills|mcps)[/\\]/.test(id)) {
+      if (id.includes('html-proxy') && /skills[/\\]/.test(id)) {
         return { id: '\0' + id, moduleSideEffects: false }
       }
     },

@@ -9,7 +9,6 @@ export default defineNitroConfig({
     nodeCompat: true,
   },
   serverAssets: [
-    { baseName: "mcps", dir: "./mcps" },
     { baseName: "plugins", dir: "./plugins" },
     { baseName: "skills", dir: "./skills" },
   ],

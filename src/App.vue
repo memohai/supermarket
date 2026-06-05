@@ -13,7 +13,6 @@
       </p>
       <div class="links">
         <a href="/api/plugins" target="_blank">API: Plugins</a>
-        <a href="/api/mcps" target="_blank">API: MCPs</a>
         <a href="/api/skills" target="_blank">API: Skills</a>
       </div>
     </div>
