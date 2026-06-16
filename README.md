@@ -9,6 +9,8 @@ supermarket/
 ├── plugins/               # Plugin registry
 │   └── <plugin-id>/
 │       ├── plugin.yaml    # Required plugin manifest
+│       ├── hooks.json     # Optional plugin-local hooks config
+│       ├── scripts/       # Optional scripts used by plugin hooks
 │       └── skills/        # Optional bundled skills
 ├── skills/                # Skill registry
 │   └── <skill-id>/
@@ -33,7 +35,7 @@ Base URL: `https://supermarket.memoh.ai`
 |--------|------|-------------|
 | GET | `/api/plugins` | List Plugins. Query: `q`, `tag`, `page`, `limit` |
 | GET | `/api/plugins/:id` | Get Plugin details |
-| GET | `/api/plugins/:id/download` | Download Plugin package (`plugin.yaml` plus bundled skills) |
+| GET | `/api/plugins/:id/download` | Download Plugin package (`plugin.yaml` plus allowed bundle assets) |
 | GET | `/api/skills` | List skills. Query: `q`, `tag`, `page`, `limit` |
 | GET | `/api/skills/:id` | Get skill details |
 | GET | `/api/skills/:id/download` | Download skill directory (tar.gz) |
@@ -85,7 +87,22 @@ mcps:
 skills: []
 ```
 
-3. Optionally bundle skills under `plugins/<plugin-id>/skills/<skill-id>/SKILL.md`.
+3. Optionally add plugin bundle assets:
+
+```text
+plugins/<plugin-id>/hooks.json
+plugins/<plugin-id>/scripts/<name>.py
+plugins/<plugin-id>/skills/<skill-id>/SKILL.md
+```
+
+Plugin download archives include:
+
+- `plugin.yaml`
+- `hooks.json`
+- `scripts/**`
+- `skills/**`
+
+Memoh uses the Supermarket API response as the source of truth for plugin manifests, MCP resources, and OAuth requirements. The downloaded `plugin.yaml` is included for package completeness, while runtime bundle assets such as hooks, scripts, and skills are installed into the bot workspace by Memoh.
 
 ### Adding a Skill
 
