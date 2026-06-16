@@ -67,6 +67,9 @@ tags:
 capabilities:
   - search_pages
 
+install:
+  - sh scripts/install.sh
+
 auth_requirements:
   - key: notion_oauth
     type: none | managed_oauth | user_secret
@@ -102,7 +105,9 @@ Plugin download archives include:
 - `scripts/**`
 - `skills/**`
 
-Memoh uses the Supermarket API response as the source of truth for plugin manifests, MCP resources, and OAuth requirements. The downloaded `plugin.yaml` is included for package completeness, while runtime bundle assets such as hooks, scripts, and skills are installed into the bot workspace by Memoh.
+The optional `install` field can be a string or string list. Each item is a shell command executed by Memoh from `/data/.memoh/plugins/<plugin-id>` after bundle extraction, usually calling a script under `scripts/**`.
+
+Memoh uses the Supermarket API response as the source of truth for plugin manifests, MCP resources, OAuth requirements, and install commands. The downloaded `plugin.yaml` is included for package completeness, while runtime bundle assets such as hooks, scripts, and skills are installed into the bot workspace by Memoh.
 
 ### Adding a Skill
 
