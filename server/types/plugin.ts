@@ -40,6 +40,7 @@ export interface PluginConfig {
   homepage?: string
   tags?: string[]
   capabilities?: string[]
+  install?: string | string[]
   variables?: McpConfigVar[]
   auth_requirements?: PluginAuthRequirement[]
   mcps?: PluginMcpResource[]
@@ -49,4 +50,3 @@ export interface PluginConfig {
 export interface PluginEntry extends PluginConfig {
   bundled_skills?: SkillConfig[]
 }
-
