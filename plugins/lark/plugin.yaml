@@ -1,0 +1,82 @@
+schema_version: "1"
+id: lark
+name: Lark
+version: 0.1.0
+description: Official Lark OpenAPI MCP server configured with app credentials in tenant access token mode. User-scoped document, message, and calendar operations require a separate user access token/OAuth setup.
+author:
+  name: Lark
+  email: larkopen@larksuite.com
+icon:
+  kind: external_url
+  url: https://www.larksuite.com/favicon.ico
+homepage: https://github.com/larksuite/lark-openapi-mcp
+tags:
+  - lark
+  - collaboration
+  - docs
+  - productivity
+capabilities:
+  - openapi
+  - tenant-access-token
+  - app-credentials
+  - docs
+  - sheets
+variables:
+  - key: LARK_APP_ID
+    description: Lark app ID from the developer console.
+    required: true
+    secret: false
+  - key: LARK_APP_SECRET
+    description: Lark app secret from the developer console.
+    required: true
+    secret: true
+  - key: LARK_DOMAIN
+    description: Lark OpenAPI domain. Use https://open.feishu.cn for Feishu tenants.
+    defaultValue: https://open.larksuite.com
+    required: false
+    secret: false
+auth_requirements:
+  - key: lark_app_credentials
+    type: user_secret
+    variables:
+      - LARK_APP_ID
+      - LARK_APP_SECRET
+mcps:
+  - key: lark
+    display_name: Lark MCP
+    description: Official Lark OpenAPI MCP resource in tenant_access_token mode. Configure a custom Lark MCP resource with user OAuth when user identity is required.
+    transport: stdio
+    command: npx
+    args:
+      - -y
+      - "@larksuiteoapi/lark-mcp@latest"
+      - mcp
+      - --app-id
+      - "${LARK_APP_ID}"
+      - --app-secret
+      - "${LARK_APP_SECRET}"
+      - --domain
+      - "${LARK_DOMAIN}"
+      - --token-mode
+      - tenant_access_token
+      - --tools
+      - preset.light
+      - --language
+      - en
+    env:
+      - key: LARK_APP_ID
+        description: Lark app ID from the developer console.
+        required: true
+        secret: false
+      - key: LARK_APP_SECRET
+        description: Lark app secret from the developer console.
+        required: true
+        secret: true
+    auth_ref: lark_app_credentials
+    visibility: hidden
+    capabilities:
+      - openapi
+      - tenant-access-token
+      - app-credentials
+      - docs
+      - sheets

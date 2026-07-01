@@ -1,0 +1,40 @@
+schema_version: "1"
+id: sentry
+name: Sentry
+version: 0.1.0
+description: Official hosted Sentry MCP server for issues, events, projects, releases, traces, and debugging context.
+author:
+  name: Sentry
+  email: support@sentry.io
+icon:
+  kind: external_url
+  url: https://sentry.io/favicon.ico
+homepage: https://mcp.sentry.dev/
+tags:
+  - sentry
+  - observability
+  - debugging
+  - devtools
+capabilities:
+  - issues
+  - events
+  - projects
+  - releases
+  - traces
+auth_requirements:
+  - key: sentry_oauth
+    type: managed_oauth
+mcps:
+  - key: sentry
+    display_name: Sentry MCP
+    description: Official hosted Sentry MCP resource managed by the Sentry plugin.
+    transport: http
+    url: https://mcp.sentry.dev/mcp
+    auth_ref: sentry_oauth
+    visibility: hidden
+    capabilities:
+      - issues
+      - events
+      - projects
+      - releases
+      - traces

@@ -1,0 +1,44 @@
+schema_version: "1"
+id: hubspot
+name: HubSpot
+version: 0.1.0
+description: Official remote HubSpot MCP server for CRM object search and account-scoped HubSpot workflows.
+author:
+  name: HubSpot
+  email: support@hubspot.com
+icon:
+  kind: external_url
+  url: https://developers.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png
+homepage: https://developers.hubspot.com/ai-tools/mcp
+tags:
+  - hubspot
+  - crm
+  - sales
+  - marketing
+  - support
+capabilities:
+  - crm
+  - contacts
+  - companies
+  - deals
+  - tickets
+  - objects
+auth_requirements:
+  - key: hubspot_oauth
+    type: managed_oauth
+    client_ref: hubspot
+mcps:
+  - key: hubspot
+    display_name: HubSpot MCP
+    description: Official remote HubSpot MCP resource managed by the HubSpot plugin.
+    transport: http
+    url: https://mcp.hubspot.com/
+    auth_ref: hubspot_oauth
+    visibility: hidden
+    capabilities:
+      - crm
+      - contacts
+      - companies
+      - deals
+      - tickets
+      - objects
