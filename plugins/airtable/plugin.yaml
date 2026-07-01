@@ -1,0 +1,42 @@
+schema_version: "1"
+id: airtable
+name: Airtable
+version: 0.1.0
+description: Official remote Airtable MCP server for bases, tables, records, interfaces, schema, search, and collaboration workflows.
+author:
+  name: Airtable
+  email: support@airtable.com
+icon:
+  kind: external_url
+  url: https://www.airtable.com/favicon.ico
+homepage: https://support.airtable.com/docs/using-the-airtable-mcp-server
+tags:
+  - airtable
+  - database
+  - productivity
+  - collaboration
+capabilities:
+  - bases
+  - tables
+  - records
+  - interfaces
+  - search
+  - schema
+auth_requirements:
+  - key: airtable_oauth
+    type: managed_oauth
+mcps:
+  - key: airtable
+    display_name: Airtable MCP
+    description: Official remote Airtable MCP resource managed by the Airtable plugin.
+    transport: http
+    url: https://mcp.airtable.com/mcp
+    auth_ref: airtable_oauth
+    visibility: hidden
+    capabilities:
+      - bases
+      - tables
+      - records
+      - interfaces
+      - schema
+      - search

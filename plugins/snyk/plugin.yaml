@@ -1,0 +1,53 @@
+schema_version: "1"
+id: snyk
+name: Snyk
+version: 0.1.0
+description: Official Snyk MCP server in lite profile for authenticated code and dependency security scanning workflows.
+author:
+  name: Snyk
+  email: support@snyk.io
+icon:
+  kind: external_url
+  url: https://snyk.io/favicon.ico
+homepage: https://docs.snyk.io/evo-by-snyk/agentic-security-with-snyk-studio/getting-started-with-snyk-studio
+tags:
+  - snyk
+  - security
+  - vulnerabilities
+  - devtools
+capabilities:
+  - code-security
+  - dependency-security
+variables:
+  - key: SNYK_TOKEN
+    description: Snyk API or personal access token.
+    required: true
+    secret: true
+auth_requirements:
+  - key: snyk_token
+    type: user_secret
+    variables:
+      - SNYK_TOKEN
+mcps:
+  - key: snyk
+    display_name: Snyk MCP
+    description: Official Snyk MCP resource in lite profile, configured with SNYK_TOKEN to avoid browser-based CLI auth prompts.
+    transport: stdio
+    command: npx
+    args:
+      - -y
+      - snyk@latest
+      - mcp
+      - -t
+      - stdio
+      - --profile=lite
+    env:
+      - key: SNYK_TOKEN
+        description: Snyk API or personal access token.
+        required: true
+        secret: true
+    auth_ref: snyk_token
+    visibility: hidden
+    capabilities:
+      - code-security
+      - dependency-security

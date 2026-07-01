@@ -1,0 +1,21 @@
+schema_version: "1"
+id: coderabbit
+name: CodeRabbit
+version: 1.1.4
+description: Official CodeRabbit skill for AI-powered code review workflows in Codex.
+author:
+  name: CodeRabbit AI
+  email: support@coderabbit.ai
+icon:
+  kind: external_url
+  url: https://www.coderabbit.ai/favicon.ico
+homepage: https://docs.coderabbit.ai/cli/overview
+tags:
+  - coderabbit
+  - code-review
+  - ai
+  - developer-tools
+capabilities:
+  - code-review
+  - pull-requests
+  - static-analysis

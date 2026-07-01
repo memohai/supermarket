@@ -2,6 +2,10 @@ export interface McpConfigVar {
   key: string
   description: string
   defaultValue?: string
+  options?: Array<{
+    label?: string
+    value: string
+  }>
 }
 
 export interface McpAuthor {

@@ -1,0 +1,57 @@
+schema_version: "1"
+id: microsoft-graph
+name: Microsoft Graph
+version: 0.1.0
+description: Official Microsoft MCP Server for Enterprise for read-only Entra identity, directory, users, groups, applications, devices, and administrative reporting. Requires tenant provisioning and admin-consented delegated MCP scopes.
+author:
+  name: Microsoft
+  email: ""
+icon:
+  kind: external_url
+  url: https://www.microsoft.com/favicon.ico
+homepage: https://learn.microsoft.com/en-us/graph/mcp-server/overview
+tags:
+  - microsoft
+  - microsoft-graph
+  - entra
+  - identity
+  - enterprise
+  - read-only
+capabilities:
+  - identity
+  - directory
+  - users
+  - groups
+  - applications
+  - devices
+  - reporting
+auth_requirements:
+  - key: microsoft_graph_oauth
+    type: managed_oauth
+    client_ref: microsoft
+    scopes:
+      - MCP.User.Read.All
+      - MCP.Group.Read.All
+      - MCP.GroupMember.Read.All
+      - MCP.Application.Read.All
+      - MCP.Device.Read.All
+      - MCP.Organization.Read.All
+      - MCP.Reports.Read.All
+      - MCP.AuditLog.Read.All
+      - MCP.DirectoryRecommendations.Read.All
+mcps:
+  - key: microsoft-graph
+    display_name: Microsoft Graph MCP
+    description: Official Microsoft MCP Server for Enterprise preview resource for read-only Microsoft Graph identity and directory scenarios. The tenant must be provisioned and the delegated MCP scopes must have admin consent.
+    transport: http
+    url: https://mcp.svc.cloud.microsoft/enterprise
+    auth_ref: microsoft_graph_oauth
+    visibility: hidden
+    capabilities:
+      - identity
+      - directory
+      - users
+      - groups
+      - applications
+      - devices
+      - reporting

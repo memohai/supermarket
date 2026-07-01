@@ -1,0 +1,56 @@
+schema_version: "1"
+id: mongodb
+name: MongoDB
+version: 0.1.0
+description: Official MongoDB MCP server for read-only database, collection, query, schema, and index inspection workflows.
+author:
+  name: MongoDB
+  email: ""
+icon:
+  kind: external_url
+  url: https://www.mongodb.com/favicon.ico
+homepage: https://www.mongodb.com/docs/mcp-server/overview/
+tags:
+  - mongodb
+  - database
+  - devtools
+  - read-only
+capabilities:
+  - databases
+  - collections
+  - queries
+  - schemas
+  - indexes
+variables:
+  - key: MDB_MCP_CONNECTION_STRING
+    description: MongoDB connection string for the database or cluster this bot may inspect.
+    required: true
+    secret: true
+auth_requirements:
+  - key: mongodb_connection_string
+    type: user_secret
+    variables:
+      - MDB_MCP_CONNECTION_STRING
+mcps:
+  - key: mongodb
+    display_name: MongoDB MCP (read-only)
+    description: Official MongoDB MCP resource started with --readOnly to disable create, update, and delete tools.
+    transport: stdio
+    command: npx
+    args:
+      - -y
+      - mongodb-mcp-server@latest
+      - --readOnly
+    env:
+      - key: MDB_MCP_CONNECTION_STRING
+        description: MongoDB connection string for the database or cluster this bot may inspect.
+        required: true
+        secret: true
+    auth_ref: mongodb_connection_string
+    visibility: hidden
+    capabilities:
+      - databases
+      - collections
+      - queries
+      - schemas
+      - indexes

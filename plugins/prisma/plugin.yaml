@@ -1,0 +1,47 @@
+schema_version: "1"
+id: prisma
+name: Prisma
+version: 0.1.0
+description: Official Prisma MCP server for Prisma Postgres database management, SQL execution, schema introspection, backups, connection strings, and Prisma documentation search.
+author:
+  name: Prisma
+  email: ""
+icon:
+  kind: external_url
+  url: https://www.prisma.io/favicon.ico
+homepage: https://www.prisma.io/docs/ai/tools/mcp-server
+tags:
+  - prisma
+  - postgres
+  - database
+  - orm
+  - devtools
+capabilities:
+  - postgres
+  - databases
+  - database-management
+  - sql
+  - schema
+  - backups
+  - connection-strings
+  - docs
+auth_requirements:
+  - key: prisma_oauth
+    type: managed_oauth
+mcps:
+  - key: prisma
+    display_name: Prisma MCP
+    description: Official remote Prisma MCP resource for Prisma Postgres management and Prisma documentation workflows. It may expose database, backup, connection string, and SQL execution tools.
+    transport: http
+    url: https://mcp.prisma.io/mcp
+    auth_ref: prisma_oauth
+    visibility: hidden
+    capabilities:
+      - postgres
+      - databases
+      - database-management
+      - sql
+      - schema
+      - backups
+      - connection-strings
+      - docs

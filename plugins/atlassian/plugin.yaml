@@ -1,0 +1,41 @@
+schema_version: "1"
+id: atlassian
+name: Atlassian
+version: 0.1.0
+description: Official remote Atlassian Rovo MCP server for Jira, Confluence, Bitbucket, Compass, search, project tracking, and knowledge workflows.
+author:
+  name: Atlassian
+  email: support@atlassian.com
+icon:
+  kind: external_url
+  url: https://www.atlassian.com/favicon.ico
+homepage: https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/
+tags:
+  - atlassian
+  - jira
+  - confluence
+  - bitbucket
+  - collaboration
+capabilities:
+  - issues
+  - projects
+  - pages
+  - search
+  - repositories
+auth_requirements:
+  - key: atlassian_oauth
+    type: managed_oauth
+mcps:
+  - key: atlassian
+    display_name: Atlassian MCP
+    description: Official remote Atlassian Rovo MCP resource managed by the Atlassian plugin.
+    transport: http
+    url: https://mcp.atlassian.com/v1/mcp/authv2
+    auth_ref: atlassian_oauth
+    visibility: hidden
+    capabilities:
+      - issues
+      - projects
+      - pages
+      - search
+      - repositories

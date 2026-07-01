@@ -1,0 +1,24 @@
+schema_version: "1"
+id: remotion
+name: Remotion
+version: 1.0.3
+description: Official Remotion skill for building programmatic videos with React, including best practices for animations, audio, captions, 3D, and rendering.
+author:
+  name: Remotion
+  email: hi@remotion.dev
+icon:
+  kind: external_url
+  url: https://remotion.dev/img/logo.png
+homepage: https://remotion.dev
+tags:
+  - remotion
+  - video
+  - react
+  - animation
+  - rendering
+capabilities:
+  - video
+  - react
+  - animation
+  - captions
+  - rendering

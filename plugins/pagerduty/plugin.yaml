@@ -1,0 +1,67 @@
+schema_version: "1"
+id: pagerduty
+name: PagerDuty
+version: 0.1.0
+description: Official PagerDuty MCP server for read-only incident, service, schedule, escalation policy, event orchestration, and on-call workflows.
+author:
+  name: PagerDuty
+  email: support@pagerduty.com
+icon:
+  kind: external_url
+  url: https://www.pagerduty.com/favicon.ico
+homepage: https://github.com/PagerDuty/pagerduty-mcp-server
+tags:
+  - pagerduty
+  - incidents
+  - on-call
+  - observability
+  - read-only
+capabilities:
+  - incidents
+  - services
+  - schedules
+  - escalation-policies
+  - event-orchestrations
+  - on-call
+variables:
+  - key: PAGERDUTY_USER_API_KEY
+    description: PagerDuty user API token.
+    required: true
+    secret: true
+  - key: PAGERDUTY_API_HOST
+    description: PagerDuty API base URL. Use https://api.eu.pagerduty.com for EU accounts.
+    defaultValue: https://api.pagerduty.com
+    required: false
+    secret: false
+auth_requirements:
+  - key: pagerduty_user_api_key
+    type: user_secret
+    variables:
+      - PAGERDUTY_USER_API_KEY
+mcps:
+  - key: pagerduty
+    display_name: PagerDuty MCP (read-only)
+    description: Official PagerDuty MCP resource. The server is read-only unless explicitly started with write tools, which this manifest does not do.
+    transport: stdio
+    command: uvx
+    args:
+      - pagerduty-mcp
+    env:
+      - key: PAGERDUTY_USER_API_KEY
+        description: PagerDuty user API token.
+        required: true
+        secret: true
+      - key: PAGERDUTY_API_HOST
+        description: PagerDuty API base URL. Use https://api.eu.pagerduty.com for EU accounts.
+        defaultValue: https://api.pagerduty.com
+        required: false
+        secret: false
+    auth_ref: pagerduty_user_api_key
+    visibility: hidden
+    capabilities:
+      - incidents
+      - services
+      - schedules
+      - escalation-policies
+      - event-orchestrations
+      - on-call

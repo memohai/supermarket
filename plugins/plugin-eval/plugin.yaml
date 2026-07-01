@@ -1,0 +1,24 @@
+schema_version: "1"
+id: plugin-eval
+name: Plugin Eval
+version: 0.1.2
+description: OpenAI Codex skills and local CLI for evaluating Codex skills and plugins with chat-first workflows, local reports, token budget analysis, and guided benchmarking.
+author:
+  name: OpenAI Codex
+  email: support@openai.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/openai/plugins/main/plugins/plugin-eval/assets/plugin-eval.svg
+homepage: https://openai.com/
+tags:
+  - codex
+  - plugins
+  - skills
+  - evaluation
+  - benchmarking
+capabilities:
+  - plugin-evaluation
+  - skill-evaluation
+  - benchmarking
+  - token-budget
+  - quality-review

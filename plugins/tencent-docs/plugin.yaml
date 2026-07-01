@@ -1,0 +1,54 @@
+schema_version: "1"
+id: tencent-docs
+name: Tencent Docs
+version: 0.1.0
+description: Tencent Docs MCP server for working with online documents, spreadsheets, forms, slides, folders, and document search through a user-provided MCP token.
+author:
+  name: Tencent Docs
+  email: ""
+icon:
+  kind: external_url
+  url: https://docs.idqqimg.com/tim/docs/desktop/favicon.ico
+homepage: https://docs.qq.com/open/document/mcp/
+tags:
+  - tencent-docs
+  - docs
+  - spreadsheets
+  - collaboration
+  - productivity
+capabilities:
+  - documents
+  - spreadsheets
+  - folders
+  - search
+  - collaboration
+variables:
+  - key: TENCENT_DOCS_AUTHORIZATION
+    description: Full Authorization header value copied from the Tencent Docs MCP token page.
+    required: true
+    secret: true
+auth_requirements:
+  - key: tencent_docs_authorization
+    type: user_secret
+    variables:
+      - TENCENT_DOCS_AUTHORIZATION
+mcps:
+  - key: tencent-docs
+    display_name: Tencent Docs MCP
+    description: Official Tencent Docs remote MCP resource. Configure it with the full Authorization header value from the Tencent Docs MCP token page.
+    transport: http
+    url: https://docs.qq.com/openapi/mcp
+    headers:
+      - key: Authorization
+        defaultValue: "${TENCENT_DOCS_AUTHORIZATION}"
+        description: Full Authorization header value from the Tencent Docs MCP token page.
+        required: true
+        secret: true
+    auth_ref: tencent_docs_authorization
+    visibility: hidden
+    capabilities:
+      - documents
+      - spreadsheets
+      - folders
+      - search
+      - collaboration

@@ -1,0 +1,42 @@
+schema_version: "1"
+id: posthog
+name: PostHog
+version: 0.1.0
+description: Official remote PostHog MCP server for product analytics, events, insights, feature flags, experiments, session replay, and error tracking context.
+author:
+  name: PostHog
+  email: hey@posthog.com
+icon:
+  kind: external_url
+  url: https://posthog.com/favicon-32x32.png
+homepage: https://posthog.com/docs/model-context-protocol/claude-code
+tags:
+  - posthog
+  - analytics
+  - product
+  - observability
+capabilities:
+  - analytics
+  - events
+  - insights
+  - feature-flags
+  - experiments
+  - errors
+auth_requirements:
+  - key: posthog_oauth
+    type: managed_oauth
+mcps:
+  - key: posthog
+    display_name: PostHog MCP
+    description: Official remote PostHog MCP resource managed by the PostHog plugin.
+    transport: http
+    url: https://mcp.posthog.com/mcp
+    auth_ref: posthog_oauth
+    visibility: hidden
+    capabilities:
+      - analytics
+      - events
+      - insights
+      - feature-flags
+      - experiments
+      - errors

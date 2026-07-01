@@ -1,0 +1,54 @@
+schema_version: "1"
+id: shopify
+name: Shopify
+version: 0.1.0
+description: Official Shopify Dev MCP server for Shopify documentation, API schemas, GraphQL validation, Liquid validation, UI extension validation, and store development.
+author:
+  name: Shopify
+  email: support@shopify.com
+icon:
+  kind: external_url
+  url: https://shopify.dev/favicon.ico
+homepage: https://shopify.dev/docs/apps/build/ai-toolkit
+tags:
+  - shopify
+  - ecommerce
+  - graphql
+  - liquid
+  - devtools
+capabilities:
+  - docs
+  - api-schemas
+  - graphql
+  - liquid
+  - validation
+  - store-development
+variables:
+  - key: OPT_OUT_INSTRUMENTATION
+    description: Disable Shopify AI Toolkit instrumentation.
+    defaultValue: "true"
+    required: false
+    secret: false
+mcps:
+  - key: shopify
+    display_name: Shopify Dev MCP
+    description: Official Shopify Dev MCP resource. It runs locally and does not require authentication.
+    transport: stdio
+    command: npx
+    args:
+      - -y
+      - "@shopify/dev-mcp@latest"
+    env:
+      - key: OPT_OUT_INSTRUMENTATION
+        description: Disable Shopify AI Toolkit instrumentation.
+        defaultValue: "true"
+        required: false
+        secret: false
+    visibility: hidden
+    capabilities:
+      - docs
+      - api-schemas
+      - graphql
+      - liquid
+      - validation
+      - store-development

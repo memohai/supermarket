@@ -1,0 +1,22 @@
+schema_version: "1"
+id: temporal
+name: Temporal
+version: 0.2.2
+description: Official Temporal skills for developing applications, using the Temporal CLI, running Temporal Server, and working with Temporal Cloud.
+author:
+  name: Temporal
+icon:
+  kind: external_url
+  url: https://temporal.io/favicon.ico
+homepage: https://temporal.io/
+tags:
+  - temporal
+  - workflow
+  - durable-execution
+  - distributed-systems
+capabilities:
+  - workflows
+  - activities
+  - workers
+  - cli
+  - cloud

@@ -1,0 +1,25 @@
+schema_version: "1"
+id: hyperframes
+name: HyperFrames
+version: 0.1.2
+description: Official HeyGen HyperFrames skills for writing HTML-rendered video compositions with GSAP animations, captions, voiceovers, audio-reactive visuals, and website-to-video capture.
+author:
+  name: HeyGen
+  email: hyperframes@heygen.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/heygen-com/hyperframes/main/assets/logo.png
+homepage: https://hyperframes.heygen.com
+tags:
+  - hyperframes
+  - video
+  - html
+  - animation
+  - gsap
+capabilities:
+  - video
+  - animation
+  - captions
+  - voiceovers
+  - audio-reactive
+  - website-capture

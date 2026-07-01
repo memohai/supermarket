@@ -1,0 +1,24 @@
+schema_version: "1"
+id: twilio-developer-kit
+name: Twilio Developer Kit
+version: 0.2.2
+description: Official Twilio skills for building, debugging, and shipping Messaging, Voice, Verify, SendGrid, and other Twilio product workflows.
+author:
+  name: Twilio
+icon:
+  kind: external_url
+  url: https://www.twilio.com/favicon.ico
+homepage: https://www.twilio.com/docs
+tags:
+  - twilio
+  - sms
+  - voice
+  - sendgrid
+  - messaging
+capabilities:
+  - messaging
+  - voice
+  - verify
+  - sendgrid
+  - compliance
+  - webhooks

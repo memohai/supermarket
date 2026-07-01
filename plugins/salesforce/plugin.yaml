@@ -1,0 +1,46 @@
+schema_version: "1"
+id: salesforce
+name: Salesforce
+version: 0.1.0
+description: Official Salesforce DX MCP server for authorized Salesforce org lookup and SOQL data query workflows.
+author:
+  name: Salesforce
+  email: support@salesforce.com
+icon:
+  kind: external_url
+  url: https://developer.salesforce.com/ns-assets/favicon.ico
+homepage: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_mcp.htm
+tags:
+  - salesforce
+  - crm
+  - soql
+  - devtools
+capabilities:
+  - orgs
+  - soql
+  - data
+variables:
+  - key: SALESFORCE_ORGS
+    description: Locally authorized Salesforce org aliases or DEFAULT_TARGET_ORG.
+    defaultValue: DEFAULT_TARGET_ORG
+    required: false
+    secret: false
+mcps:
+  - key: salesforce
+    display_name: Salesforce DX MCP
+    description: Official Salesforce DX MCP resource. Authorize orgs locally with Salesforce CLI before enabling this plugin.
+    transport: stdio
+    command: npx
+    args:
+      - -y
+      - "@salesforce/mcp@latest"
+      - --orgs
+      - "${SALESFORCE_ORGS}"
+      - --toolsets
+      - orgs,data
+      - --no-telemetry
+    visibility: hidden
+    capabilities:
+      - orgs
+      - soql
+      - data

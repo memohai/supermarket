@@ -1,0 +1,25 @@
+schema_version: "1"
+id: build-macos-apps
+name: Build macOS Apps
+version: 0.1.4
+description: OpenAI skills for building, running, testing, debugging, instrumenting, and packaging local macOS apps with Xcode, SwiftUI, AppKit, and shell-first workflows.
+author:
+  name: OpenAI
+  email: support@openai.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/openai/plugins/main/plugins/build-macos-apps/assets/app-icon.png
+homepage: https://openai.com/
+tags:
+  - macos
+  - swift
+  - swiftui
+  - xcode
+  - appkit
+capabilities:
+  - macos-apps
+  - swiftui
+  - appkit
+  - xcode
+  - debugging
+  - notarization

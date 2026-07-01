@@ -1,0 +1,40 @@
+schema_version: "1"
+id: gitlab
+name: GitLab
+version: 0.1.0
+description: Official GitLab Duo MCP server for projects, issues, merge requests, repositories, and GitLab workflow context. Requires GitLab Duo MCP availability for the account or instance.
+author:
+  name: GitLab
+  email: support@gitlab.com
+icon:
+  kind: external_url
+  url: https://gitlab.com/favicon.ico
+homepage: https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/
+tags:
+  - gitlab
+  - git
+  - devtools
+  - project-management
+capabilities:
+  - projects
+  - issues
+  - merge-requests
+  - repositories
+  - workflows
+auth_requirements:
+  - key: gitlab_oauth
+    type: managed_oauth
+mcps:
+  - key: gitlab
+    display_name: GitLab MCP
+    description: Official GitLab Duo MCP resource for GitLab.com.
+    transport: http
+    url: https://gitlab.com/api/v4/mcp
+    auth_ref: gitlab_oauth
+    visibility: hidden
+    capabilities:
+      - projects
+      - issues
+      - merge-requests
+      - repositories
+      - workflows

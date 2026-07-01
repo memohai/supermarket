@@ -1,0 +1,24 @@
+schema_version: "1"
+id: nvidia
+name: NVIDIA
+version: 1.0.2
+description: Official NVIDIA skills for GPU acceleration, CUDA, AI agents, inference, robotics, Omniverse, simulation, and physical AI workflows.
+author:
+  name: NVIDIA
+icon:
+  kind: external_url
+  url: https://www.nvidia.com/favicon.ico
+homepage: https://build.nvidia.com/skills/
+tags:
+  - nvidia
+  - gpu
+  - cuda
+  - ai
+  - robotics
+capabilities:
+  - gpu
+  - cuda
+  - inference
+  - robotics
+  - simulation
+  - omniverse

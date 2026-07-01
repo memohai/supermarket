@@ -1,0 +1,24 @@
+schema_version: "1"
+id: zotero
+name: Zotero
+version: 0.1.2
+description: OpenAI skill for working with Zotero from Codex, including library search, BibTeX export, citation insertion, imports, and local Zotero desktop workflows.
+author:
+  name: OpenAI
+  email: support@openai.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/openai/plugins/main/plugins/zotero/assets/icon.png
+homepage: https://openai.com/
+tags:
+  - zotero
+  - citations
+  - bibliography
+  - research
+  - bibtex
+capabilities:
+  - citations
+  - bibliography
+  - bibtex
+  - library-search
+  - references

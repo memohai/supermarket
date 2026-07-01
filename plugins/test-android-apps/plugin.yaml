@@ -1,0 +1,25 @@
+schema_version: "1"
+id: test-android-apps
+name: Test Android Apps
+version: 0.1.2
+description: OpenAI skills for testing Android apps with emulator workflows, screenshots, UI inspection, log capture, and performance profiling.
+author:
+  name: OpenAI
+  email: support@openai.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/openai/plugins/main/plugins/test-android-apps/assets/app-icon.png
+homepage: https://openai.com/
+tags:
+  - android
+  - emulator
+  - adb
+  - testing
+  - performance
+capabilities:
+  - android-testing
+  - emulator
+  - adb
+  - logcat
+  - ui-inspection
+  - performance

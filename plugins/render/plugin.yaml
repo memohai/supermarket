@@ -1,0 +1,24 @@
+schema_version: "1"
+id: render
+name: Render
+version: 0.1.3
+description: Official Render skills for deploying, debugging, monitoring, and migrating apps on Render.
+author:
+  name: Render
+  email: support@render.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/renderinc/render-codex-plugin/main/assets/logo.svg
+homepage: https://github.com/renderinc/render-codex-plugin
+tags:
+  - render
+  - deploy
+  - cloud
+  - monitoring
+  - devops
+capabilities:
+  - deployment
+  - debugging
+  - monitoring
+  - blueprints
+  - migrations

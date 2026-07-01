@@ -1,0 +1,25 @@
+schema_version: "1"
+id: build-web-data-visualization
+name: Build Web Data Visualization
+version: 0.1.21
+description: OpenAI skills for designing, implementing, testing, and exporting charts, dashboards, maps, reports, diagrams, and advanced web visualizations.
+author:
+  name: OpenAI
+  email: support@openai.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/openai/plugins/main/plugins/build-web-data-visualization/assets/app-icon.svg
+homepage: https://openai.com/
+tags:
+  - visualization
+  - charts
+  - dashboards
+  - maps
+  - reports
+capabilities:
+  - charts
+  - dashboards
+  - maps
+  - diagrams
+  - reports
+  - webgl

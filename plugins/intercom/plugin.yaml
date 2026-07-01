@@ -1,0 +1,40 @@
+schema_version: "1"
+id: intercom
+name: Intercom
+version: 0.1.0
+description: Official remote Intercom MCP server for conversations, contacts, companies, help center articles, support context, and customer workflows.
+author:
+  name: Intercom
+  email: team@intercom.com
+icon:
+  kind: external_url
+  url: https://intercom.github.io/developer-hub/public/img/Intercom_Logo_Horizontal_Black.svg
+homepage: https://developers.intercom.com/docs/guides/mcp
+tags:
+  - intercom
+  - support
+  - crm
+  - customer-success
+capabilities:
+  - conversations
+  - contacts
+  - companies
+  - articles
+  - search
+auth_requirements:
+  - key: intercom_oauth
+    type: managed_oauth
+mcps:
+  - key: intercom
+    display_name: Intercom MCP
+    description: Official remote Intercom MCP resource managed by the Intercom plugin. Intercom currently supports US-hosted workspaces.
+    transport: http
+    url: https://mcp.intercom.com/mcp
+    auth_ref: intercom_oauth
+    visibility: hidden
+    capabilities:
+      - conversations
+      - contacts
+      - companies
+      - articles
+      - search

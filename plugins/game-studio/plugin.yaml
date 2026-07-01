@@ -1,0 +1,25 @@
+schema_version: "1"
+id: game-studio
+name: Game Studio
+version: 0.1.2
+description: OpenAI skills for designing, prototyping, playtesting, and shipping browser games with guided 2D, 3D, asset, and UI workflows.
+author:
+  name: OpenAI
+  email: support@openai.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/openai/plugins/main/plugins/game-studio/assets/app-icon.png
+homepage: https://openai.com/
+tags:
+  - games
+  - phaser
+  - threejs
+  - webgl
+  - sprites
+capabilities:
+  - game-design
+  - browser-games
+  - phaser
+  - threejs
+  - playtesting
+  - asset-pipeline

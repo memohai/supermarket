@@ -1,0 +1,75 @@
+schema_version: "1"
+id: square
+name: Square
+version: 0.1.0
+description: Official Square MCP server for sandbox-first Square API exploration through the server's general API request tooling and service catalog.
+author:
+  name: Square
+  email: support@squareup.com
+icon:
+  kind: external_url
+  url: https://developer.squareup.com/favicon.ico
+homepage: https://developer.squareup.com/docs/mcp
+tags:
+  - square
+  - payments
+  - commerce
+  - ecommerce
+  - sandbox
+capabilities:
+  - square-api
+  - service-catalog
+  - commerce
+  - sandbox
+variables:
+  - key: ACCESS_TOKEN
+    description: Square access token.
+    required: true
+    secret: true
+  - key: SANDBOX
+    description: Use Square sandbox APIs.
+    defaultValue: "true"
+    required: false
+    secret: false
+  - key: DISALLOW_WRITES
+    description: Disable tools that write to Square APIs.
+    defaultValue: "true"
+    required: false
+    secret: false
+auth_requirements:
+  - key: square_access_token
+    type: user_secret
+    variables:
+      - ACCESS_TOKEN
+mcps:
+  - key: square
+    display_name: Square MCP
+    description: Official Square MCP resource configured with sandbox and write-disabled defaults. These environment settings can be changed by the user.
+    transport: stdio
+    command: npx
+    args:
+      - -y
+      - square-mcp-server@latest
+      - start
+    env:
+      - key: ACCESS_TOKEN
+        description: Square access token.
+        required: true
+        secret: true
+      - key: SANDBOX
+        description: Use Square sandbox APIs.
+        defaultValue: "true"
+        required: false
+        secret: false
+      - key: DISALLOW_WRITES
+        description: Disable tools that write to Square APIs.
+        defaultValue: "true"
+        required: false
+        secret: false
+    auth_ref: square_access_token
+    visibility: hidden
+    capabilities:
+      - square-api
+      - service-catalog
+      - commerce
+      - sandbox

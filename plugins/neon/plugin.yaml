@@ -1,0 +1,41 @@
+schema_version: "1"
+id: neon
+name: Neon
+version: 0.1.0
+description: Official hosted Neon MCP server for Postgres projects, branches, schemas, querying, and database development workflows. Configured in read-only mode by default.
+author:
+  name: Neon
+  email: support@neon.tech
+icon:
+  kind: external_url
+  url: https://neon.com/favicon/favicon.ico
+homepage: https://neon.com/docs/ai/neon-mcp-server
+tags:
+  - neon
+  - database
+  - postgres
+  - backend
+  - devtools
+capabilities:
+  - projects
+  - branches
+  - schema
+  - querying
+  - database
+auth_requirements:
+  - key: neon_oauth
+    type: managed_oauth
+mcps:
+  - key: neon
+    display_name: Neon MCP
+    description: Official hosted Neon MCP resource in read-only mode.
+    transport: http
+    url: https://mcp.neon.tech/mcp?readonly=true
+    auth_ref: neon_oauth
+    visibility: hidden
+    capabilities:
+      - projects
+      - branches
+      - schema
+      - querying
+      - database

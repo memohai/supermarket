@@ -1,0 +1,21 @@
+schema_version: "1"
+id: circleci
+name: CircleCI
+version: 1.0.4
+description: Official CircleCI skills for CI/CD configuration, builds, deployments, and build failure diagnosis.
+author:
+  name: CircleCI
+icon:
+  kind: external_url
+  url: https://circleci.com/favicon.ico
+homepage: https://circleci.com
+tags:
+  - circleci
+  - ci
+  - cd
+  - devops
+capabilities:
+  - ci
+  - builds
+  - deployment
+  - configuration

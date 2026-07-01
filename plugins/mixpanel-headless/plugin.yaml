@@ -1,0 +1,24 @@
+schema_version: "1"
+id: mixpanel-headless
+name: Mixpanel Headless
+version: 0.1.2
+description: Official Mixpanel Headless skills for analyzing Mixpanel data with the mixpanel_headless Python SDK, dashboards, funnels, retention, flows, and product analytics workflows.
+author:
+  name: Mixpanel
+icon:
+  kind: external_url
+  url: https://mixpanel.com/favicon.ico
+homepage: https://mixpanel.github.io/mixpanel-headless/
+tags:
+  - mixpanel
+  - analytics
+  - product-analytics
+  - dashboards
+  - data
+capabilities:
+  - analytics
+  - dashboards
+  - funnels
+  - retention
+  - flows
+  - python-sdk

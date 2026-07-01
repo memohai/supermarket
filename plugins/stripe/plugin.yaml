@@ -1,0 +1,65 @@
+schema_version: "1"
+id: stripe
+name: Stripe
+version: 0.1.0
+description: Official Stripe MCP server for finance, billing, customer, invoice, subscription, product, and payment analysis. Use a read-only restricted API key to limit access.
+author:
+  name: Stripe
+  email: support@stripe.com
+icon:
+  kind: external_url
+  url: https://stripe.com/favicon.ico
+homepage: https://docs.stripe.com/mcp
+tags:
+  - stripe
+  - payments
+  - billing
+  - finance
+  - restricted-key
+capabilities:
+  - customers
+  - invoices
+  - subscriptions
+  - products
+  - prices
+  - payments
+  - reporting
+variables:
+  - key: STRIPE_RESTRICTED_KEY
+    description: Stripe restricted API key with read-only permissions for the resources this bot may inspect.
+    required: true
+    secret: true
+auth_requirements:
+  - key: stripe_restricted_key
+    type: user_secret
+    variables:
+      - STRIPE_RESTRICTED_KEY
+mcps:
+  - key: stripe
+    display_name: Stripe MCP
+    description: Official Stripe remote MCP resource. The server exposes both read and write tools; use a read-only restricted API key as the security boundary.
+    transport: http
+    url: https://mcp.stripe.com
+    headers:
+      - key: Authorization
+        defaultValue: "Bearer ${STRIPE_RESTRICTED_KEY}"
+        description: Stripe restricted API key bearer token.
+        required: true
+        secret: true
+    auth_ref: stripe_restricted_key
+    visibility: hidden
+    allowed_tools:
+      - stripe_api_read
+      - stripe_api_search
+      - stripe_api_details
+      - search_stripe_resources
+      - fetch_stripe_resources
+      - get_stripe_account_info
+    capabilities:
+      - customers
+      - invoices
+      - subscriptions
+      - products
+      - prices
+      - payments
+      - reporting

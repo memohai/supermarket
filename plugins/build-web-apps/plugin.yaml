@@ -1,0 +1,24 @@
+schema_version: "1"
+id: build-web-apps
+name: Build Web Apps
+version: 0.1.2
+description: OpenAI skills for building frontend-focused web apps with generated assets, browser testing, UI components, payments, and database guidance.
+author:
+  name: OpenAI
+  email: support@openai.com
+icon:
+  kind: external_url
+  url: https://raw.githubusercontent.com/openai/plugins/main/plugins/build-web-apps/assets/app-icon.png
+homepage: https://openai.com/
+tags:
+  - web
+  - frontend
+  - react
+  - testing
+  - full-stack
+capabilities:
+  - frontend
+  - browser-testing
+  - ui-components
+  - payments
+  - databases

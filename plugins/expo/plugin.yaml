@@ -1,0 +1,25 @@
+schema_version: "1"
+id: expo
+name: Expo
+version: 1.0.2
+description: Official Expo skills for building, deploying, upgrading, and debugging Expo and React Native apps.
+author:
+  name: Expo Team
+  email: support@expo.dev
+icon:
+  kind: external_url
+  url: https://static.expo.dev/static/brand/app-icon-512x512.png
+homepage: https://docs.expo.dev/skills/
+tags:
+  - expo
+  - react-native
+  - mobile
+  - ios
+  - android
+capabilities:
+  - react-native
+  - expo-router
+  - eas
+  - deployment
+  - upgrades
+  - native-modules

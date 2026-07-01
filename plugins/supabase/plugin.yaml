@@ -1,0 +1,43 @@
+schema_version: "1"
+id: supabase
+name: Supabase
+version: 0.1.0
+description: Official remote Supabase MCP server for database schema, SQL query, project, logs, docs, and development workflows. Configured in hosted read-only mode by default.
+author:
+  name: Supabase
+  email: support@supabase.io
+icon:
+  kind: external_url
+  url: https://supabase.com/favicon/favicon-32x32.png
+homepage: https://supabase.com/docs/guides/ai-tools/mcp
+tags:
+  - supabase
+  - database
+  - postgres
+  - backend
+  - devtools
+capabilities:
+  - database
+  - schema
+  - sql
+  - projects
+  - logs
+  - docs
+auth_requirements:
+  - key: supabase_oauth
+    type: managed_oauth
+mcps:
+  - key: supabase
+    display_name: Supabase MCP
+    description: Official remote Supabase MCP resource in hosted read-only mode.
+    transport: http
+    url: https://mcp.supabase.com/mcp?read_only=true
+    auth_ref: supabase_oauth
+    visibility: hidden
+    capabilities:
+      - database
+      - schema
+      - sql
+      - projects
+      - logs
+      - docs

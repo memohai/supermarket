@@ -1,0 +1,43 @@
+schema_version: "1"
+id: datadog
+name: Datadog
+version: 0.1.0
+description: Official managed Datadog MCP server for the US1 site, covering logs, metrics, traces, incidents, dashboards, monitors, and observability investigation.
+author:
+  name: Datadog
+  email: support@datadoghq.com
+icon:
+  kind: external_url
+  url: https://www.datadoghq.com/favicon.ico
+homepage: https://docs.datadoghq.com/mcp_server/
+tags:
+  - datadog
+  - observability
+  - monitoring
+  - logs
+  - metrics
+capabilities:
+  - logs
+  - metrics
+  - traces
+  - incidents
+  - dashboards
+  - monitors
+auth_requirements:
+  - key: datadog_oauth
+    type: managed_oauth
+mcps:
+  - key: datadog
+    display_name: Datadog MCP
+    description: Official managed Datadog MCP resource for the US1 site. Regional Datadog sites use different MCP hosts.
+    transport: http
+    url: https://mcp.datadoghq.com/api/unstable/mcp-server/mcp
+    auth_ref: datadog_oauth
+    visibility: hidden
+    capabilities:
+      - logs
+      - metrics
+      - traces
+      - incidents
+      - dashboards
+      - monitors

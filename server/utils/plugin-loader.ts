@@ -6,7 +6,8 @@ import type { SkillConfig } from '../types/skill'
 
 let cache: PluginEntry[] | null = null
 
-const bundledPluginAssetPrefixes = ['skills:', 'scripts:']
+const bundledPluginAssetPrefixes = ['skills:', 'scripts:', 'assets:', 'references:', 'commands:', 'agents:', 'src:']
+const bundledPluginAssetFiles = ['hooks.json', 'package.json']
 
 function normalizeAuthor(raw: any): McpAuthor {
   if (raw && typeof raw === 'object' && 'name' in raw) {
@@ -188,7 +189,7 @@ export async function getPluginFiles(id: string): Promise<Record<string, Uint8Ar
     if (!key.startsWith(pluginPrefix)) continue
     const pluginRelativeKey = key.substring(pluginPrefix.length)
     if (
-      pluginRelativeKey !== 'hooks.json' &&
+      !bundledPluginAssetFiles.includes(pluginRelativeKey) &&
       !bundledPluginAssetPrefixes.some((prefix) => pluginRelativeKey.startsWith(prefix))
     ) {
       continue
