@@ -1,0 +1,40 @@
+schema_version: "1"
+id: vercel
+name: Vercel
+version: 0.1.0
+description: Official remote Vercel MCP server for projects, deployments, logs, teams, domains, and Vercel documentation workflows.
+author:
+  name: Vercel
+  email: support@vercel.com
+icon:
+  kind: external_url
+  url: https://vercel.com/favicon.ico
+homepage: https://vercel.com/docs/agent-resources/vercel-mcp
+tags:
+  - vercel
+  - deployment
+  - hosting
+  - devtools
+capabilities:
+  - projects
+  - deployments
+  - logs
+  - domains
+  - documentation
+auth_requirements:
+  - key: vercel_oauth
+    type: managed_oauth
+mcps:
+  - key: vercel
+    display_name: Vercel MCP
+    description: Official remote Vercel MCP resource managed by the Vercel plugin.
+    transport: http
+    url: https://mcp.vercel.com
+    auth_ref: vercel_oauth
+    visibility: hidden
+    capabilities:
+      - projects
+      - deployments
+      - logs
+      - domains
+      - documentation

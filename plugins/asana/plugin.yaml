@@ -1,0 +1,41 @@
+schema_version: "1"
+id: asana
+name: Asana
+version: 0.1.0
+description: Official Asana V2 MCP server for tasks, projects, portfolios, goals, workspace search, and project management workflows.
+author:
+  name: Asana
+  email: support@asana.com
+icon:
+  kind: external_url
+  url: https://asana.com/favicon.ico
+homepage: https://developers.asana.com/docs/mcp-server
+tags:
+  - asana
+  - tasks
+  - project-management
+  - productivity
+capabilities:
+  - tasks
+  - projects
+  - portfolios
+  - goals
+  - search
+auth_requirements:
+  - key: asana_oauth
+    type: managed_oauth
+    client_ref: asana
+mcps:
+  - key: asana
+    display_name: Asana MCP
+    description: Official Asana V2 MCP resource. Asana requires a pre-registered MCP OAuth app.
+    transport: http
+    url: https://mcp.asana.com/v2/mcp
+    auth_ref: asana_oauth
+    visibility: hidden
+    capabilities:
+      - tasks
+      - projects
+      - portfolios
+      - goals
+      - search
