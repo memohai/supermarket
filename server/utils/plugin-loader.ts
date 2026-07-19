@@ -6,6 +6,8 @@ import type { SkillConfig } from '../types/skill'
 
 let cache: PluginEntry[] | null = null
 
+const bundledPluginAssetPrefixes = ['skills:', 'scripts:']
+
 function normalizeAuthor(raw: any): McpAuthor {
   if (raw && typeof raw === 'object' && 'name' in raw) {
     return { name: String(raw.name ?? ''), email: String(raw.email ?? '') }
@@ -181,10 +183,17 @@ export async function getPluginFiles(id: string): Promise<Record<string, Uint8Ar
 
   const storage = useStorage('assets/plugins')
   const allKeys = await storage.getKeys()
-  const prefix = `${id}:skills:`
+  const pluginPrefix = `${id}:`
   for (const key of allKeys) {
-    if (!key.startsWith(prefix)) continue
-    const relativePath = key.substring(`${id}:`.length).replaceAll(':', '/')
+    if (!key.startsWith(pluginPrefix)) continue
+    const pluginRelativeKey = key.substring(pluginPrefix.length)
+    if (
+      pluginRelativeKey !== 'hooks.json' &&
+      !bundledPluginAssetPrefixes.some((prefix) => pluginRelativeKey.startsWith(prefix))
+    ) {
+      continue
+    }
+    const relativePath = pluginRelativeKey.replaceAll(':', '/')
     const raw = await storage.getItemRaw(key)
     if (raw instanceof Uint8Array) {
       files[relativePath] = raw
