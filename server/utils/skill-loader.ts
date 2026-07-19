@@ -1,6 +1,7 @@
 import { useStorage } from 'nitro/storage'
 import { parse as parseYaml } from 'yaml'
 import type { SkillAuthor, SkillConfig } from '../types/skill'
+import { normalizePagination } from './pagination'
 
 function normalizeAuthor(raw: any): SkillAuthor {
   if (raw && typeof raw === 'object' && 'name' in raw) {
@@ -104,9 +105,7 @@ export async function getAllSkills(options?: {
     )
   }
 
-  const page = options?.page ?? 1
-  const limit = options?.limit ?? 20
-  const start = (page - 1) * limit
+  const { page, limit, start } = normalizePagination(options)
 
   return {
     total: filtered.length,

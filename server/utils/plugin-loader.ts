@@ -3,6 +3,7 @@ import { parse as parseYaml, stringify as stringifyYaml } from 'yaml'
 import type { McpAuthor } from '../types/mcp'
 import type { PluginEntry, PluginIcon } from '../types/plugin'
 import type { SkillConfig } from '../types/skill'
+import { normalizePagination } from './pagination'
 
 let cache: PluginEntry[] | null = null
 
@@ -143,9 +144,7 @@ export async function getAllPlugins(options?: {
     )
   }
 
-  const page = options?.page ?? 1
-  const limit = options?.limit ?? 20
-  const start = (page - 1) * limit
+  const { page, limit, start } = normalizePagination(options)
 
   return {
     total: filtered.length,
